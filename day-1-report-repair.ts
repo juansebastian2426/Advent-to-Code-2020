@@ -1,4 +1,4 @@
-const expense_report = [
+let input: number[] = [
   1686,
   1337,
   1780,
@@ -204,4 +204,23 @@ const expense_report = [
   1862
 ]
 
-console.log('Hello')
+let complement: Record<number, boolean> = {};
+
+for (let num of input) {
+  complement[num] = true;
+  let toFind = 2020 - num;
+
+  if (complement[toFind]) {
+    console.log(num * toFind);
+  }
+}
+
+for (let numA of input) {
+  for (let numB of input) {
+    for (let numC of input) {
+      if (numA + numB + numC === 2020 && numA != numB && numB != numC && numB != numC) {
+        console.log(numA * numB * numC);
+      }
+    }
+  }
+}
