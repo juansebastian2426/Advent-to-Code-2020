@@ -1027,11 +1027,39 @@ for (let data of input) {
     inputsCorrect.push(password);
   }
 }
-
-
 console.log(inputsCorrect.length)
 
-// console.log('2-8 t: pncmjxlvckfbtrjh'.split(':'))
+const inputCorrect2 = [];
+
+for (let data of input) {
+  const dataSplited = data.split(':');
+  const polity = dataSplited[0];
+  const password = dataSplited[1].trim();
+
+  const politySplited = polity.split(' ');
+  const quantity = politySplited[0];
+  const letter = politySplited[1];
+
+  const quantitySplited = quantity.split('-')
+  const minQuantity = parseInt(quantitySplited[0]);
+  const maxQuantity = parseInt(quantitySplited[1]);
+
+  const passwordSplitted = password.split('');
+  if ((passwordSplitted[minQuantity - 1] === letter && passwordSplitted[maxQuantity - 1] != letter) || 
+    (passwordSplitted[minQuantity - 1] != letter && passwordSplitted[maxQuantity - 1] === letter)){
+      inputCorrect2.push(password);
+    }
+
+}
+
+console.log(inputCorrect2.length)
+
+const passSplitted = 'pncmjxlvckfbtrjh'.split('')
+if ((passSplitted[1 - 1] === 'p' && passSplitted[4 - 1] != 'p') || (passSplitted[1 - 1] != 'p' && passSplitted[4 - 1] === 'p')){
+  console.log(true)
+}
+
+//console.log('pncmjxlvckfbtrjh'.split(''))
 
 // const numberTimesRepeated = [];
 // for (var i = 0; i < 'pncmjxlvckfbtrjh'.length; i++) {
