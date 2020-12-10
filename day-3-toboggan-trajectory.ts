@@ -336,23 +336,7 @@ for (let item of newInput) {
   matriz.push(row);
 }
 
-// slope 2
-let treesSlope2 = 0;
-let lastPositionSlope2 = [0, 0]; // x and y -> x = columns, y = filas
-for (let i = 0; i < matriz.length; i++) {
-  const column = lastPositionSlope2[0];
-  const row = lastPositionSlope2[1];
-
-  const char = matriz[row][column];
-
-  if (char === '#') {
-    treesSlope2++
-  }
-
-  lastPositionSlope2 = [column + 3, row + 1];
-}
-
-// slope 1
+// slope Right 1, down 1
 let treesSlope1 = 0;
 let lastPositionSlope1 = [0, 0]; // x and y -> x = columns, y = filas
 for (let i = 0; i < matriz.length; i++) {
@@ -367,8 +351,26 @@ for (let i = 0; i < matriz.length; i++) {
 
   lastPositionSlope1 = [column + 1, row + 1];
 }
+console.log(treesSlope1)
 
-// slope 3
+// slope Right 3, down 1
+let treesSlope2 = 0;
+let lastPositionSlope2 = [0, 0]; // x and y -> x = columns, y = filas
+for (let i = 0; i < matriz.length; i++) {
+  const column = lastPositionSlope2[0];
+  const row = lastPositionSlope2[1];
+
+  const char = matriz[row][column];
+
+  if (char === '#') {
+    treesSlope2++
+  }
+
+  lastPositionSlope2 = [column + 3, row + 1];
+}
+console.log(treesSlope2)
+
+// slope Right 5, down 1
 let treesSlope3 = 0;
 let lastPositionSlope3 = [0, 0]; // x and y -> x = columns, y = filas
 for (let i = 0; i < matriz.length; i++) {
@@ -383,8 +385,9 @@ for (let i = 0; i < matriz.length; i++) {
 
   lastPositionSlope3 = [column + 5, row + 1];
 }
+console.log(treesSlope3)
 
-// slope 4
+// slope Right 7, down 1
 let treesSlope4 = 0;
 let lastPositionSlope4 = [0, 0]; // x and y -> x = columns, y = filas
 for (let i = 0; i < matriz.length; i++) {
@@ -399,23 +402,28 @@ for (let i = 0; i < matriz.length; i++) {
 
   lastPositionSlope4 = [column + 7, row + 1];
 }
+console.log(treesSlope4)
 
 
-// slope 5
+// slope Right 1, down 2
 let treesSlope5 = 0;
 let lastPositionSlope5 = [0, 0]; // x and y -> x = columns, y = filas
 for (let i = 0; i < matriz.length; i++) {
   const column = lastPositionSlope5[0];
   const row = lastPositionSlope5[1];
 
-  const char = matriz[row][column];
+  try {
+    const char = matriz[row][column];
+    if (char === '#') {
+      treesSlope5++
+    }
 
-  if (char === '#') {
-    treesSlope5++
+  } catch {
+    break;
   }
 
   lastPositionSlope5 = [column + 1, row + 2];
 }
+console.log(treesSlope5)
 
-console.log(treesSlope1, treesSlope2, treesSlope3, treesSlope4, treesSlope5)
 
