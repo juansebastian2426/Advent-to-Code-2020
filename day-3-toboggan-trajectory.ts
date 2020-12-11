@@ -330,100 +330,38 @@ for (let item of input) {
   newInput.push(item.repeat(lengthInput))
 }
 
-const matriz = []; // matriz 10013 x 323
+// we expand the width of the matriz, it will be of 10013 x 323
+const matriz: string[][] = [];
 for (let item of newInput) {
   const row = item.split('')
   matriz.push(row);
 }
 
-// slope Right 1, down 1
-let treesSlope1 = 0;
-let lastPositionSlope1 = [0, 0]; // x and y -> x = columns, y = filas
-for (let i = 0; i < matriz.length; i++) {
-  const column = lastPositionSlope1[0];
-  const row = lastPositionSlope1[1];
+const toboggan = (slopNum1_x: number, slopNum2_y: number) => {
+  let trees = 0;
+  let lastPosition = [0, 0]; // x and y -> x = columns, y = filas
+  for (let i = 0; i < matriz.length; i++) {
+    const column = lastPosition[0];
+    const row = lastPosition[1];
 
-  const char = matriz[row][column];
+    try {
+      const char = matriz[row][column];
 
-  if (char === '#') {
-    treesSlope1++
-  }
+      if (char === '#') {
+        trees++
+      }
 
-  lastPositionSlope1 = [column + 1, row + 1];
-}
-console.log(treesSlope1)
-
-// slope Right 3, down 1
-let treesSlope2 = 0;
-let lastPositionSlope2 = [0, 0]; // x and y -> x = columns, y = filas
-for (let i = 0; i < matriz.length; i++) {
-  const column = lastPositionSlope2[0];
-  const row = lastPositionSlope2[1];
-
-  const char = matriz[row][column];
-
-  if (char === '#') {
-    treesSlope2++
-  }
-
-  lastPositionSlope2 = [column + 3, row + 1];
-}
-console.log(treesSlope2)
-
-// slope Right 5, down 1
-let treesSlope3 = 0;
-let lastPositionSlope3 = [0, 0]; // x and y -> x = columns, y = filas
-for (let i = 0; i < matriz.length; i++) {
-  const column = lastPositionSlope3[0];
-  const row = lastPositionSlope3[1];
-
-  const char = matriz[row][column];
-
-  if (char === '#') {
-    treesSlope3++
-  }
-
-  lastPositionSlope3 = [column + 5, row + 1];
-}
-console.log(treesSlope3)
-
-// slope Right 7, down 1
-let treesSlope4 = 0;
-let lastPositionSlope4 = [0, 0]; // x and y -> x = columns, y = filas
-for (let i = 0; i < matriz.length; i++) {
-  const column = lastPositionSlope4[0];
-  const row = lastPositionSlope4[1];
-
-  const char = matriz[row][column];
-
-  if (char === '#') {
-    treesSlope4++
-  }
-
-  lastPositionSlope4 = [column + 7, row + 1];
-}
-console.log(treesSlope4)
-
-
-// slope Right 1, down 2
-let treesSlope5 = 0;
-let lastPositionSlope5 = [0, 0]; // x and y -> x = columns, y = filas
-for (let i = 0; i < matriz.length; i++) {
-  const column = lastPositionSlope5[0];
-  const row = lastPositionSlope5[1];
-
-  try {
-    const char = matriz[row][column];
-    if (char === '#') {
-      treesSlope5++
+      lastPosition = [column + slopNum1_x, row + slopNum2_y];
+    } catch {
+      break;
     }
-
-  } catch {
-    break;
   }
 
-  lastPositionSlope5 = [column + 1, row + 2];
+  return trees;
 }
-console.log(treesSlope5)
 
-
+console.log(toboggan(3, 1))
+console.log(toboggan(1, 1))
+console.log(toboggan(5, 1))
+console.log(toboggan(7, 1))
+console.log(toboggan(1, 2))
